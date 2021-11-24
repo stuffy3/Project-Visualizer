@@ -8,12 +8,43 @@
     <title>mic</title>
     <script src="mic.js"></script>
     <script src="visualizer.js"></script>
-    <script src="pump.js"></script>
+    <script src="slider.js"></script>
   </head>
-  
+
   <body onload="main()">
-    <div>
-    <canvas id="my-canvas"></canvas>
-  </div>
+    <div id="center-div">
+      <canvas id="my-canvas"></canvas>
+    </div>
+    <div class="slidecontainer">
+      <input
+        type="range"
+        min="1"
+        max="10"
+        value="1"
+        step=".01"
+        class="slider"
+        id="myRange"
+      />
+      <br />
+      <input
+        type="range"
+        class="slider"
+        min="32"
+        max="1024"
+        
+        
+        id="myRange2"
+      />
+      <br>
+      <input
+      type="range"
+      min="1"
+      max="300"
+      value="1"
+      class="slider"
+      id="myRange3"
+    />
+     
+    </div>
   </body>
 </html>
