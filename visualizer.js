@@ -85,14 +85,13 @@ function main(){
     // sliderEle3.onchange = function(){
     // window.location.reload()
     // }
-    let sliderEle = document.getElementById("myRange2")
-    sliderEle.onchange  = function(){
-        window.location.reload()
-    }
+    // let sliderEle = document.getElementById("myRange2")
+    // sliderEle.onchange  = function(){
+    //     window.location.reload()
+    // }
     
     
     createBars();
-    console.log(bars)
     let angle = 0;
     
     
@@ -106,6 +105,7 @@ function main(){
             
             //generates audio sample from microphone
             const samples = microphone.getSamples()
+            //gathers mic volume
             const volume = microphone.getVolume()
             const scale = slider
             const color = `hsl(${slider3}, 100%, 50% )`
