@@ -10,6 +10,11 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../index.html'))
     
 });
+app.get('/style.css', (req, res) => {
+    res.sendFile(path.join(__dirname, '../stylesheet.css'))
+    
+  })
+
 
 app.get('/visualizer.js', function(req, res) {
     res.sendFile(path.join(__dirname, '../visualizer.js'))
