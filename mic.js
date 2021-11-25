@@ -6,7 +6,7 @@ class Microphone {
             this.audioContext = new AudioContext();//imports web audio api 
             this.microphone = this.audioContext.createMediaStreamSource(stream);//grabs the microphone audio
             this.analyser = this.audioContext.createAnalyser();//creates an analyser which shows frequency data
-            this.analyser.fftSize = 1024; //fast fourier transform
+            this.analyser.fftSize = 2048; //fast fourier transform
             const bufferLength = this.analyser.frequencyBinCount; //half of fftSize or how many bars will be displayed
             this.dataArray = new Uint8Array(bufferLength);//convert audio data into 8bit integers
             this.microphone.connect(this.analyser); //connects microphone audio to analyser
