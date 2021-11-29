@@ -5,7 +5,7 @@ function main(){
     let sliderEle2 = document.getElementById("myRange2")
     const canvas = document.getElementById("my-canvas")
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth/1;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight/1.15; 
 
     class Bar {
@@ -46,7 +46,7 @@ function main(){
             context.save();
             context.beginPath();
             context.moveTo(0, 0);
-            context.lineTo(this.x, this.y);
+            context.lineTo(this.x*2, this.y/2);
             context.stroke();
             context.closePath()
         }
@@ -96,7 +96,7 @@ function main(){
                 
                 const scale = slider
                 const color = `hsl(${slider3}, 100%, 50% )`
-                angle -= slider4/1000;
+                angle += slider4/1000;
                 ctx.save()
                 ctx.translate(canvas.width/2, canvas.height/2)
                 ctx.rotate(angle)
