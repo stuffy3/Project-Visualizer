@@ -14,17 +14,23 @@ header {
   font-size: 70px;
   text-align: center;
 }
+
+h1 {
+  color:#ffffff;
+  text-align: center;
+}
   
 button {
   color: #ffffff;
   height: 65px;
   width:150px;
   border: 2px solid rgb(255, 0, 0);
+  border-radius:100px;
   background-color: transparent;
   position: absolute;
   top: 50%;
-  left: 45%;
-  monospace;
+  left: 46%;
+monospace;
     font-size: 20px;
     letter-spacing: 1px;
     cursor: pointer;
