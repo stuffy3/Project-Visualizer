@@ -27,8 +27,8 @@ app.get('/visualizer.js', function(req, res) {
     
 });
 
-app.get('/mic.js', function(req, res) {
-    res.sendFile(path.join(__dirname, '../mic.js'))
+app.get('/audio.js', function(req, res) {
+    res.sendFile(path.join(__dirname, '../audio.js'))
     
 });
 

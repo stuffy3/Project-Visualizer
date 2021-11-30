@@ -1,7 +1,5 @@
 
-
-
-function main(){
+function visualizer(){
     let sliderEle2 = document.getElementById("myRange2")
     const canvas = document.getElementById("my-canvas")
     const ctx = canvas.getContext('2d');
@@ -18,8 +16,8 @@ function main(){
             this.index = index;
             
         }
-        update(micInput, ){ //this is where we pass in the audio input to generate the bars
-            const sound = micInput * 3000
+        update(samples){ //this is where we pass in the audio input to generate the bars
+            const sound = samples * 3000
             if(sound > this.height){
                 this.height = sound;
             }else{
@@ -40,27 +38,10 @@ function main(){
             context.restore();
             
         }
-
-        drawBars(context){
-            context.strokeStyle = this.color;
-            context.save();
-            context.beginPath();
-            context.moveTo(0, 0);
-            context.lineTo(this.x*2, this.y/2);
-            context.stroke();
-            context.closePath()
-        }
-        
     }
     
-    
-    
-    
-    
-   
-    
     const fftSize = 512
-    const microphone = new Microphone(fftSize);
+    const audio1 = new AudioInput(fftSize);
     let bars = []
     let barWidth = canvas.width/(fftSize)
 
@@ -82,16 +63,16 @@ function main(){
         createBars();
         let angle = 0;
         
-        
+        //animates the bars to the input sound
         function animate(){
             let slider = document.getElementById("myRange").value;
             let slider3 = document.getElementById("myRange3").value
             let slider4 = document.getElementById("myRange4").value
             let slider5 = document.getElementById("myRange5").value
-            if(microphone.initialized){
+            if(audio1.initialized){
                 ctx.clearRect(0, 0, canvas.width, canvas.height);   
                 //generates audio sample from microphone
-                const samples = microphone.getSamples()
+                const samples = audio1.getSamples()
                 //gathers mic volume
                 
                 const scale = slider
@@ -102,7 +83,7 @@ function main(){
                 ctx.rotate(angle)
                 //animate bars based on microphone data
                 bars.forEach(function(bar, i){
-                    bar.update(samples[i], scale*2);
+                    bar.update(samples[i]);
                     bar.draw(ctx, scale/2, color, slider5)
                     
                 });

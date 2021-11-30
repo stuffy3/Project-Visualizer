@@ -1,4 +1,4 @@
-class Microphone {
+class AudioInput {
     constructor(){
         this.initialized = false;
         navigator.mediaDevices.getUserMedia({audio:true})
@@ -19,23 +19,20 @@ class Microphone {
     }
     getSamples(){
         this.analyser.getByteTimeDomainData(this.dataArray)
-        let normSamples = [...this.dataArray].map(e => e/128 - 1) //take data and spread it into the array converts it into a value between 0-2
+        let normSamples = [...this.dataArray].map(e => e/128 - 1) //converts Uint8Array to an actual array making the values go from 255 to -1 through +1
         return normSamples;
     }
     getVolume(){
         this.analyser.getByteTimeDomainData(this.dataArray)
-        let normSamples = [...this.dataArray].map(e => e/128 - 1);
+        let normSamples = [...this.dataArray].map(e => e/128 - 1); //converts Uint8Array to an actual array making the values go from 255 to -1 through +1
         let sum = 0;
-        for(let i = 0; i < normSamples.length; i++){
+        for(let i = 0; i < normSamples.length; i++){ // creates a total sum of all the values then averages it out by multiplying it by itself and square rooting it
             sum += normSamples[i]* normSamples[i];
         }
         let volume = Math.sqrt(sum / normSamples.length)
         return volume
     }   
-    getfftSize(){
-        var slider2 = document.getElementById("myRange2").value;
-        this.analyser.fftSize = slider2
-    } 
+   
 }
 
-const microphone = new Microphone();
+const audio1 = new AudioInput();

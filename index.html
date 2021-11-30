@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Audio-Visualizer</title>
-    <script src="mic.js"></script>
+    <script src="audio.js"></script>
     <script src="visualizer.js"></script>
   </head>
 
-  <body onload="main()"> >
+  <body onload="visualizer()"> >
     <div id="center-div">
       <canvas id="my-canvas"></canvas>
     </div>
@@ -21,7 +21,7 @@
         min="1"
         max="10"
         value="5"
-        step=".01"
+        step=".001"
         class="slider"
         id="myRange"
       />
@@ -49,7 +49,7 @@
         min="1"
         max="10"
         value="1"
-        step="0.2"
+        step="0.001"
         class="slider"
         id="myRange4"
       />
